@@ -7,7 +7,8 @@ let savePosterBtn = document.querySelector('.save-poster')
 let randomPosterBtn = document.querySelector('.show-random')
 let showSavedBtn = document.querySelector('.show-saved')
 let makeYourOwnBtn = document.querySelector('.show-form')
-
+let makeYourOwnForm = document.querySelector('.poster-form')
+let mainPoster = document.querySelector('.main-poster')
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -115,9 +116,14 @@ window.addEventListener('DOMContentLoaded' , function() {
   createRandom()
 })
 randomPosterBtn.addEventListener('click', createRandom)
+makeYourOwnBtn.addEventListener('click' , showForm)
+
 // functions and event handlers go here 
 // (we've provided two to get you started)!
-
+function showForm() {
+  makeYourOwnForm.classList.remove('hidden')
+  mainPoster.classList.add('hidden')
+}
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -141,4 +147,3 @@ function createRandom() {
   quote.innerText = randomQuote;
   currentPoster = createPoster(randomImage, randomTitle, randomQuote);
 }
-
