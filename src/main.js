@@ -161,11 +161,6 @@ function showSaved() {
   savedPage.classList.remove('hidden')
   mainPage.classList.add('hidden')
 }
-//helpers 
-
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
 
 function createUserPoster(event) {
   event.preventDefault()
@@ -174,14 +169,6 @@ function createUserPoster(event) {
   title.innerText = titleInput.value
   quote.innerText = quoteInput.value
   showMain()
-}
-
-function createPoster(imageURL, title, quote) {
-  return {
-    id: Date.now(), 
-    imageURL: imageURL, 
-    title: title, 
-    quote: quote}
 }
 
 function createRandom() {
@@ -194,4 +181,20 @@ function createRandom() {
   quote.innerText = randomQuote;
   currentPoster = createPoster(randomImage, randomTitle, randomQuote);
 }
+
+//helpers 
+
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
+function createPoster(imageURL, title, quote) {
+  return {
+    id: Date.now(), 
+    imageURL: imageURL, 
+    title: title, 
+    quote: quote}
+}
+
+
 
