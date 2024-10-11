@@ -1,15 +1,18 @@
 // query selector variables go here
-let poster = document.querySelector('.main-poster')
-let title = document.querySelector('.poster-title')
-let imageURL = document.querySelector('.poster-img')
-let quote = document.querySelector('.poster-quote')
+
 let savePosterBtn = document.querySelector('.save-poster')
 let randomPosterBtn = document.querySelector('.show-random')
 let showSavedBtn = document.querySelector('.show-saved')
 let makeYourOwnBtn = document.querySelector('.show-form')
 let makeYourOwnForm = document.querySelector('.poster-form')
-let mainPoster = document.querySelector('.main-poster')
 let takeMeBackBtn = document.querySelector('.show-main')
+
+let savedPage = document.querySelector('.saved-posters')
+let mainPage = document.querySelector('.main-poster')
+let poster = document.querySelector('.main-poster')
+let title = document.querySelector('.poster-title')
+let imageURL = document.querySelector('.poster-img')
+let quote = document.querySelector('.poster-quote')
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
 var images = [
@@ -119,18 +122,23 @@ window.addEventListener('DOMContentLoaded' , function() {
 randomPosterBtn.addEventListener('click', createRandom)
 makeYourOwnBtn.addEventListener('click' , showForm)
 takeMeBackBtn.addEventListener('click', showMain)
+savePosterBtn.addEventListener('click' , showSaved)
 // functions and event handlers go here 
 // (we've provided two to get you started)!
 function showForm() {
   makeYourOwnForm.classList.remove('hidden')
-  mainPoster.classList.add('hidden')
+  mainPage.classList.add('hidden')
 }
 
 function showMain(){
   makeYourOwnForm.classList.add('hidden')
-  mainPoster.classList.remove('hidden')
+  mainPage.classList.remove('hidden')
 }
 
+function showSaved() {
+  savedPage.classList.remove('hidden')
+  mainPage.classList.remove('.hidden')
+}
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
