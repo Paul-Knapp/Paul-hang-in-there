@@ -130,6 +130,7 @@ function showMain(){
   makeYourOwnForm.classList.add('hidden')
   mainPoster.classList.remove('hidden')
 }
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
