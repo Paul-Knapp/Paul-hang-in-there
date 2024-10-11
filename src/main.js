@@ -4,19 +4,27 @@ let savePosterBtn = document.querySelector('.save-poster')
 let randomPosterBtn = document.querySelector('.show-random')
 let showSavedBtn = document.querySelector('.show-saved')
 let makeYourOwnBtn = document.querySelector('.show-form')
-let makeYourOwnForm = document.querySelector('.poster-form')
 let takeMeBackBtn = document.querySelector('.show-main')
-let showSavedPosters = document.querySelector('.show-saved')
-let backToMain = document.querySelector('.back-to-main')
+let showSavedPostersBtn = document.querySelector('.show-saved')
+let backToMainBtn = document.querySelector('.back-to-main')
+let makePosterBtn = document.querySelector('.make-poster')
 
+let makeYourOwnPage = document.querySelector('.poster-form')
 let savedPage = document.querySelector('.saved-posters')
 let mainPage = document.querySelector('.main-poster')
+
 let poster = document.querySelector('.main-poster')
 let title = document.querySelector('.poster-title')
 let imageURL = document.querySelector('.poster-img')
 let quote = document.querySelector('.poster-quote')
+
+let imageInput = document.querySelector('#poster-image-url')
+let titleInput = document.querySelector('#poster-title')
+let quoteInput = document.querySelector('#poster-quote')
+
 // we've provided you with some data to work with 👇
 // tip: you can tuck this data out of view with the dropdown found near the line number where the variable is declared 
+
 var images = [
   "./assets/bees.jpg",
   "./assets/bridge.jpg",
@@ -114,27 +122,37 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
 var savedPosters = [];
 var currentPoster;
+var pages = [savedPage, mainPage, makeYourOwnPage]
 
 // event listeners go here 👇
+
 window.addEventListener('DOMContentLoaded' , function() {
   createRandom()
 })
 randomPosterBtn.addEventListener('click', createRandom)
 makeYourOwnBtn.addEventListener('click' , showForm)
 takeMeBackBtn.addEventListener('click', showMain)
-showSavedPosters.addEventListener('click' , showSaved)
-backToMain.addEventListener('click', showMain)
-// functions and event handlers go here 
-// (we've provided two to get you started)!
+showSavedPostersBtn.addEventListener('click' , showSaved)
+backToMainBtn.addEventListener('click', showMain)
+makePosterBtn.addEventListener('click' , createUserPoster)
+// functions and event handlers go here
+
+//make a reusable function for switching views
+//function showPage(, ) {
+
+//}
+
+
 function showForm() {
-  makeYourOwnForm.classList.remove('hidden')
+ makeYourOwnPage.classList.remove('hidden')
   mainPage.classList.add('hidden')
 }
 
 function showMain(){
-  makeYourOwnForm.classList.add('hidden')
+ makeYourOwnPage.classList.add('hidden')
   mainPage.classList.remove('hidden')
   savedPage.classList.add('hidden')
 }
@@ -143,8 +161,16 @@ function showSaved() {
   savedPage.classList.remove('hidden')
   mainPage.classList.add('hidden')
 }
+//helpers 
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+}
+
+function createUserPoster(event) {
+  event.preventDefault()
+  createPoster(imageInput.value , titleInput.value, quoteInput.value )
+  showMain()
 }
 
 function createPoster(imageURL, title, quote) {
@@ -165,3 +191,4 @@ function createRandom() {
   quote.innerText = randomQuote;
   currentPoster = createPoster(randomImage, randomTitle, randomQuote);
 }
+
