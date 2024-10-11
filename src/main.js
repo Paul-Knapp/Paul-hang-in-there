@@ -6,6 +6,8 @@ let showSavedBtn = document.querySelector('.show-saved')
 let makeYourOwnBtn = document.querySelector('.show-form')
 let makeYourOwnForm = document.querySelector('.poster-form')
 let takeMeBackBtn = document.querySelector('.show-main')
+let showSavedPosters = document.querySelector('.show-saved')
+let backToMain = document.querySelector('.back-to-main')
 
 let savedPage = document.querySelector('.saved-posters')
 let mainPage = document.querySelector('.main-poster')
@@ -122,7 +124,8 @@ window.addEventListener('DOMContentLoaded' , function() {
 randomPosterBtn.addEventListener('click', createRandom)
 makeYourOwnBtn.addEventListener('click' , showForm)
 takeMeBackBtn.addEventListener('click', showMain)
-savePosterBtn.addEventListener('click' , showSaved)
+showSavedPosters.addEventListener('click' , showSaved)
+backToMain.addEventListener('click', showMain)
 // functions and event handlers go here 
 // (we've provided two to get you started)!
 function showForm() {
@@ -133,11 +136,12 @@ function showForm() {
 function showMain(){
   makeYourOwnForm.classList.add('hidden')
   mainPage.classList.remove('hidden')
+  savedPage.classList.add('hidden')
 }
 
 function showSaved() {
   savedPage.classList.remove('hidden')
-  mainPage.classList.remove('.hidden')
+  mainPage.classList.add('hidden')
 }
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
