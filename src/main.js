@@ -169,7 +169,10 @@ function getRandomIndex(array) {
 
 function createUserPoster(event) {
   event.preventDefault()
-  createPoster(imageInput.value , titleInput.value, quoteInput.value )
+  currentPoster = createPoster(imageInput.value , titleInput.value, quoteInput.value )
+  imageURL.src = imageInput.value
+  title.innerText = titleInput.value
+  quote.innerText = quoteInput.value
   showMain()
 }
 
