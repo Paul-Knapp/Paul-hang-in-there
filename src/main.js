@@ -168,6 +168,7 @@ function createUserPoster(event) {
   imageURL.src = imageInput.value
   title.innerText = titleInput.value
   quote.innerText = quoteInput.value
+  console.log('imageURL.src')
   showMain()
 }
 
