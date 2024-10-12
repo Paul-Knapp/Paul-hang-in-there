@@ -17,6 +17,7 @@ let poster = document.querySelector('.main-poster')
 let title = document.querySelector('.poster-title')
 let imageURL = document.querySelector('.poster-img')
 let quote = document.querySelector('.poster-quote')
+let savedPostersGrid = document.querySelector('.saved-posters-grid')
 
 let imageInput = document.querySelector('#poster-image-url')
 let titleInput = document.querySelector('#poster-title')
@@ -133,52 +134,49 @@ window.addEventListener('DOMContentLoaded' , function() {
   createRandom()
 })
 randomPosterBtn.addEventListener('click', createRandom)
-makeYourOwnBtn.addEventListener('click' , showForm)
-takeMeBackBtn.addEventListener('click', showMain)
-showSavedPostersBtn.addEventListener('click' , showSaved)
-backToMainBtn.addEventListener('click', showMain)
+makeYourOwnBtn.addEventListener('click' , function() {
+  showPage(makeYourOwnPage)
+})
+takeMeBackBtn.addEventListener('click', function() {
+  showPage(mainPage)
+})
+showSavedPostersBtn.addEventListener('click' , function() {
+  showPage(savedPage)
+})
+backToMainBtn.addEventListener('click', function() {
+  showPage(mainPage)
+})
 makePosterBtn.addEventListener('click' , createUserPoster)
 savePosterBtn.addEventListener('click' , savePoster)
 
 // functions and event handlers go here
 
 //make a reusable function for switching views
-//function showPage(, ) {
 
-//}
+function showPage(pageToShow) {
+  pages.forEach(page => page.classList.add('hidden'))
 
-
-function showForm() {
- makeYourOwnPage.classList.remove('hidden')
-  mainPage.classList.add('hidden')
+  pageToShow.classList.remove('hidden')
 }
-
-function showMain(){
- makeYourOwnPage.classList.add('hidden')
-  mainPage.classList.remove('hidden')
-  savedPage.classList.add('hidden')
-}
-
-function showSaved() {
-  savedPage.classList.remove('hidden')
-  mainPage.classList.add('hidden')
+function displayCurrent(currentPoster) {
+  imageURL.src = currentPoster.imageURL
+  title.innerText = currentPoster.title
+  quote.innerText = currentPoster.quote
 }
 
 function savePoster() {
-  savedPosters.push(`${currentPoster}`)
-  console.log('savedPosters')
+  savedPosters.push(currentPoster)
+  savedPostersGrid.innerHTML += currentPoster
 }
 
 function createUserPoster(event) {
   event.preventDefault()
   currentPoster = createPoster(imageInput.value , titleInput.value, quoteInput.value )
-  imageURL.src = imageInput.value
-  title.innerText = titleInput.value
-  quote.innerText = quoteInput.value
+  displayCurrent(currentPoster)
   images.push(`${imageInput.value}`)
   titles.push(`${titleInput.value}`)
   quotes.push(`${quoteInput.value}`)
-  showMain()
+  showPage(mainPage)
 }
 
 function createRandom() {
@@ -186,13 +184,9 @@ function createRandom() {
   let randomTitle = titles[getRandomIndex(titles)];
   let randomQuote = quotes[getRandomIndex(quotes)];
   
-  imageURL.src = randomImage;
-  title.innerText = randomTitle;
-  quote.innerText = randomQuote;
   currentPoster = createPoster(randomImage, randomTitle, randomQuote);
+  displayCurrent(currentPoster)
 }
-
-//helpers 
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
