@@ -138,6 +138,8 @@ takeMeBackBtn.addEventListener('click', showMain)
 showSavedPostersBtn.addEventListener('click' , showSaved)
 backToMainBtn.addEventListener('click', showMain)
 makePosterBtn.addEventListener('click' , createUserPoster)
+savePosterBtn.addEventListener('click' , savePoster)
+
 // functions and event handlers go here
 
 //make a reusable function for switching views
@@ -162,13 +164,20 @@ function showSaved() {
   mainPage.classList.add('hidden')
 }
 
+function savePoster() {
+  savedPosters.push(`${currentPoster}`)
+  console.log('savedPosters')
+}
+
 function createUserPoster(event) {
   event.preventDefault()
   currentPoster = createPoster(imageInput.value , titleInput.value, quoteInput.value )
   imageURL.src = imageInput.value
   title.innerText = titleInput.value
   quote.innerText = quoteInput.value
-  console.log('imageURL.src')
+  images.push(`${imageInput.value}`)
+  titles.push(`${titleInput.value}`)
+  quotes.push(`${quoteInput.value}`)
   showMain()
 }
 
