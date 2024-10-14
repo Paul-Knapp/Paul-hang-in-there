@@ -8,10 +8,12 @@ let takeMeBackBtn = document.querySelector('.show-main')
 let showSavedPostersBtn = document.querySelector('.show-saved')
 let backToMainBtn = document.querySelector('.back-to-main')
 let makePosterBtn = document.querySelector('.make-poster')
+let unmotivationalBtn = document.querySelector('.show-unmotivational')
 
 let makeYourOwnPage = document.querySelector('.poster-form')
 let savedPage = document.querySelector('.saved-posters')
 let mainPage = document.querySelector('.main-poster')
+let unmotivationalPage = document.querySelector('.sad-posters')
 
 let poster = document.querySelector('.main-poster')
 let title = document.querySelector('.poster-title')
@@ -126,14 +128,137 @@ var quotes = [
 
 var savedPosters = [];
 var currentPoster;
-var pages = [savedPage, mainPage, makeYourOwnPage]
-
+var pages = [savedPage, mainPage, makeYourOwnPage, unmotivationalPage]
+let unmotivationalPosters = [
+  {
+    name: "FAILURE",
+    description: "Why bother trying? It's probably not worth it.",
+    price: 68.00,
+    year: 2019,
+    vintage: true,
+    img_url: "./assets/failure.jpg",
+  },
+  {
+    name: "MEDIOCRITY",
+    description: "Dreams are just that—dreams.",
+    price: 127.00,
+    year: 2021,
+    vintage: false,
+    img_url: "./assets/mediocrity.jpg",
+  },
+  {
+    name: "REGRET",
+    description: "Hard work rarely pays off.",
+    price: 89.00,
+    year: 2018,
+    vintage: true,
+    img_url:  "./assets/regret.jpg",
+  },
+  {
+    name: "FUTILITY",
+    description: "You're not good enough.",
+    price: 150.00,
+    year: 2016,
+    vintage: false,
+    img_url:  "./assets/futility.jpg",
+  },
+  {
+    name: "DEFEAT",
+    description: "It's too late to start now.",
+    price: 35.00,
+    year: 2023,
+    vintage: false,
+    img_url:  "./assets/defeat.jpg",
+  },
+  {
+    name: "HOPELESSNESS",
+    description: "Stay in your comfort zone; it's safer.",
+    price: 112.00,
+    year: 2020,
+    vintage: true,
+    img_url: "./assets/hopelessness.jpg",
+  },
+  {
+    name: "LAZINESS",
+    description: "You can't change anything.",
+    price: 25.00,
+    year: 2022,
+    vintage: false,
+    img_url: "./assets/laziness.jpg",
+  },
+  {
+    name: "PROCRASTINATION",
+    description: "Better to avoid failure by not trying at all.",
+    price: 48.00,
+    year: 2017,
+    vintage: true,
+    img_url: "./assets/procrastination.jpg",
+  },
+  {
+    name: "DESPAIR",
+    description: "Let someone else do it; you’ll just mess it up.",
+    price: 73.00,
+    year: 2015,
+    vintage: false,
+    img_url: "./assets/despair.jpg",
+  },
+  {
+    name: "NEGLECT",
+    description: "Happiness is overrated.",
+    price: 160.00,
+    year: 2019,
+    vintage: true,
+    img_url: "./assets/neglect.jpg",
+  },
+  {
+    name: "FEAR",
+    description: "Giving up is always an option.",
+    price: 91.00,
+    year: 2014,
+    vintage: false,
+    img_url: "./assets/fear.jpg",
+  },
+  {
+    name: "APATHY",
+    description: "No one cares about your effort.",
+    price: 110.00,
+    year: 2016,
+    vintage: true,
+    img_url: "./assets/apathy.jpg",
+  },
+  {
+    name: "MISERY",
+    description: "Why take risks when you can stay stagnant?",
+    price: 55.00,
+    year: 2021,
+    vintage: false,
+    img_url: "./assets/misery.jpg",
+  },
+  {
+    name: "BLAME",
+    description: "Expect disappointment and you'll never be disappointed.",
+    price: 39.00,
+    year: 2017,
+    vintage: true,
+    img_url: "./assets/blame.jpg",
+  },
+  {
+    name: "DOUBT",
+    description: "Success is for other people, not you.",
+    price: 140.00,
+    year: 2020,
+    vintage: false,
+    img_url: "./assets/doubt.jpg",
+  }
+];
 // event listeners go here 👇
 
 window.addEventListener('DOMContentLoaded' , function() {
   createRandom()
 })
+
 randomPosterBtn.addEventListener('click', createRandom)
+
 makeYourOwnBtn.addEventListener('click' , function() {
   showPage(makeYourOwnPage)
 })
@@ -141,10 +266,14 @@ takeMeBackBtn.addEventListener('click', function() {
   showPage(mainPage)
 })
 showSavedPostersBtn.addEventListener('click' , function() {
+  showSaved()
   showPage(savedPage)
 })
 backToMainBtn.addEventListener('click', function() {
   showPage(mainPage)
+})
+unmotivationalBtn.addEventListener('click', function() {
+  showPage(unmotivationalPage)
 })
 makePosterBtn.addEventListener('click' , createUserPoster)
 savePosterBtn.addEventListener('click' , savePoster)
@@ -158,6 +287,7 @@ function showPage(pageToShow) {
 
   pageToShow.classList.remove('hidden')
 }
+
 function displayCurrent(currentPoster) {
   imageURL.src = currentPoster.imageURL
   title.innerText = currentPoster.title
@@ -165,8 +295,21 @@ function displayCurrent(currentPoster) {
 }
 
 function savePoster() {
-  savedPosters.push(currentPoster)
-  savedPostersGrid.innerHTML += currentPoster
+  if (!savedPosters.some(poster => poster.id === currentPoster.id)) {
+    savedPosters.push(currentPoster);
+  }
+}
+
+function showSaved() {
+  savedPostersGrid.innerHTML = '';
+  savedPosters.forEach(savedPoster => {
+    savedPostersGrid.innerHTML += `
+     <div class="mini-poster"> 
+      <img src="${(savedPoster.imageURL)}" alt="${savedPoster.title}">
+      <h2>${savedPoster.title}</h2>
+      <h4>${savedPoster.quote}</h4>
+    </div>`
+  })
 }
 
 function createUserPoster(event) {
