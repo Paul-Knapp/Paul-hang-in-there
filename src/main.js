@@ -265,22 +265,27 @@ randomPosterBtn.addEventListener('click', createRandom)
 makeYourOwnBtn.addEventListener('click' , function() {
   showPage(makeYourOwnPage)
 })
+
 takeMeBackBtn.addEventListener('click', function() {
   showPage(mainPage)
 })
+
 showSavedPostersBtn.addEventListener('click' , function() {
   showSaved()
   showPage(savedPage)
 })
+
 backToMainBtn.addEventListener('click', function() {
   showPage(mainPage)
 })
+
 unmotivationalBtn.addEventListener('click', function() {
   showUnmotivational()
   showPage(unmotivationalPage)
 })
 
 makePosterBtn.addEventListener('click' , createUserPoster)
+
 savePosterBtn.addEventListener('click' , savePoster)
 
 // functions and event handlers go here
