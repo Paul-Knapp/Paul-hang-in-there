@@ -9,6 +9,7 @@ let showSavedPostersBtn = document.querySelector('.show-saved')
 let backToMainBtn = document.querySelector('.back-to-main')
 let makePosterBtn = document.querySelector('.make-poster')
 let unmotivationalBtn = document.querySelector('.show-unmotivational')
+let backToMainBtnSad = document.querySelector('.back-to-main-page')
 
 let makeYourOwnPage = document.querySelector('.poster-form')
 let savedPage = document.querySelector('.saved-posters')
@@ -282,6 +283,10 @@ backToMainBtn.addEventListener('click', function() {
 unmotivationalBtn.addEventListener('click', function() {
   showUnmotivational()
   showPage(unmotivationalPage)
+})
+
+backToMainBtnSad.addEventListener('click', function() {
+  showPage(mainPage)
 })
 
 makePosterBtn.addEventListener('click' , createUserPoster)
