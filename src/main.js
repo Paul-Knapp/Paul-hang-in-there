@@ -285,7 +285,7 @@ unmotivationalBtn.addEventListener('click', function() {
   showPage(unmotivationalPage)
 })
 
-backToMainBtnSad.addEventListener('click', funtion() {
+backToMainBtnSad.addEventListener('click', function() {
   showPage(mainPage)
 })
 
