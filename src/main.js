@@ -276,8 +276,10 @@ backToMainBtn.addEventListener('click', function() {
   showPage(mainPage)
 })
 unmotivationalBtn.addEventListener('click', function() {
+  showUnmotivational()
   showPage(unmotivationalPage)
 })
+
 makePosterBtn.addEventListener('click' , createUserPoster)
 savePosterBtn.addEventListener('click' , savePoster)
 
@@ -318,11 +320,11 @@ function showSaved() {
 function showUnmotivational() {
   unmotivationalPosters.innerHTML = '';
   unmotivationalPosters.forEach(sadPoster => {
-    sad.innerHTML += `
+    sadPostersGrid.innerHTML += `
      <div class="mini-poster"> 
-      <img src="${(savedPoster.imageURL)}" alt="${savedPoster.title}">
-      <h2>${savedPoster.title}</h2>
-      <h4>${savedPoster.quote}</h4>
+      <img src="${(sadPoster.imageURL)}" alt="${sadPoster.title}">
+      <h2>${sadPoster.title}</h2>
+      <h4>${sadPoster.quote}</h4>
     </div>`
   })
 }
