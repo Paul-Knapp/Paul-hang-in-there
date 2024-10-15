@@ -20,6 +20,7 @@ let title = document.querySelector('.poster-title')
 let imageURL = document.querySelector('.poster-img')
 let quote = document.querySelector('.poster-quote')
 let savedPostersGrid = document.querySelector('.saved-posters-grid')
+let sadPostersGrid = document.querySelector('.sad-posters-grid')
 
 let imageInput = document.querySelector('#poster-image-url')
 let titleInput = document.querySelector('#poster-title')
@@ -125,11 +126,7 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-
-var savedPosters = [];
-var currentPoster;
-var pages = [savedPage, mainPage, makeYourOwnPage, unmotivationalPage]
-let unmotivationalPosters = [
+let unmotivationalInfo = [
   {
     name: "FAILURE",
     description: "Why bother trying? It's probably not worth it.",
@@ -251,6 +248,12 @@ let unmotivationalPosters = [
     img_url: "./assets/doubt.jpg",
   }
 ];
+
+var unmotivationalPosters = [];
+var savedPosters = [];
+var currentPoster;
+var pages = [savedPage, mainPage, makeYourOwnPage, unmotivationalPage]
+
 // event listeners go here 👇
 
 window.addEventListener('DOMContentLoaded' , function() {
@@ -312,6 +315,18 @@ function showSaved() {
   })
 }
 
+function showUnmotivational() {
+  unmotivationalPosters.innerHTML = '';
+  unmotivationalPosters.forEach(sadPoster => {
+    sad.innerHTML += `
+     <div class="mini-poster"> 
+      <img src="${(savedPoster.imageURL)}" alt="${savedPoster.title}">
+      <h2>${savedPoster.title}</h2>
+      <h4>${savedPoster.quote}</h4>
+    </div>`
+  })
+}
+
 function createUserPoster(event) {
   event.preventDefault()
   currentPoster = createPoster(imageInput.value , titleInput.value, quoteInput.value )
@@ -343,5 +358,11 @@ function createPoster(imageURL, title, quote) {
     quote: quote}
 }
 
+unmotivationalInfo.forEach((sadPoster) => {
+  sadTitle = sadPoster.name
+  sadQuote = sadPoster.description
+  sadImage = sadPoster.img_url
+  unmotivationalPosters.push(createPoster(sadImage,sadTitle,sadQuote))
+})
 
 
