@@ -285,6 +285,10 @@ unmotivationalBtn.addEventListener('click', function() {
   showPage(unmotivationalPage)
 })
 
+backToMainBtnSad.addEventListener('click', funtion() {
+  showPage(mainPage)
+})
+
 makePosterBtn.addEventListener('click' , createUserPoster)
 
 savePosterBtn.addEventListener('click' , savePoster)
