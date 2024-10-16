@@ -10,7 +10,6 @@ let backToMainBtn = document.querySelector('.back-to-main')
 let makePosterBtn = document.querySelector('.make-poster')
 let unmotivationalBtn = document.querySelector('.show-unmotivational')
 let backToMainBtnSad = document.querySelector('.back-to-main-page')
-let unmotivationalPosterSection = document.querySelector('.sad-posters')
 
 let makeYourOwnPage = document.querySelector('.poster-form')
 let savedPage = document.querySelector('.saved-posters')
@@ -294,7 +293,7 @@ makePosterBtn.addEventListener('click' , createUserPoster)
 
 savePosterBtn.addEventListener('click' , savePoster)
 
-unmotivationalPosterSection.addEventListener('click', deletePoster)
+
 
 // functions and event handlers go here
 
@@ -334,7 +333,7 @@ function showUnmotivational() {
   sadPostersGrid.innerHTML = '';
   unmotivationalPosters.forEach(sadPoster => {
     sadPostersGrid.innerHTML += `
-     <div class="mini-poster> 
+     <div class="mini-poster"> 
       <img src="${(sadPoster.imageURL)}" alt="${sadPoster.title}">
       <h2>${sadPoster.title}</h2>
       <h4>${sadPoster.quote}</h4>
