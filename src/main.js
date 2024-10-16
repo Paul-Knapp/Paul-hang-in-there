@@ -10,6 +10,7 @@ let backToMainBtn = document.querySelector('.back-to-main')
 let makePosterBtn = document.querySelector('.make-poster')
 let unmotivationalBtn = document.querySelector('.show-unmotivational')
 let backToMainBtnSad = document.querySelector('.back-to-main-page')
+let miniPosters = document.querySelectorAll('sad-posters-grid .mini-poster')
 
 let makeYourOwnPage = document.querySelector('.poster-form')
 let savedPage = document.querySelector('.saved-posters')
@@ -298,9 +299,8 @@ savePosterBtn.addEventListener('click' , savePoster)
 //make a reusable function for switching views
 
 function showPage(pageToShow) {
-  pages.forEach(page => page.classList.add('hidden'))
-
-  pageToShow.classList.remove('hidden')
+  pages.forEach(page => page.classList.add('hidden'));
+  pageToShow.classList.remove('hidden');
 }
 
 function displayCurrent(currentPoster) {
@@ -328,15 +328,16 @@ function showSaved() {
 }
 
 function showUnmotivational() {
-  unmotivationalPosters.innerHTML = '';
-  unmotivationalPosters.forEach(sadPoster => {
+  sadPostersGrid.innerHTML = '';
+  unmotivationalPosters.forEach((sadPoster, index) => {
     sadPostersGrid.innerHTML += `
-     <div class="mini-poster"> 
-      <img src="${(sadPoster.imageURL)}" alt="${sadPoster.title}">
+     <div class="mini-poster" data-index="${index}"> 
+      <img src="${sadPoster.imageURL}" alt="${sadPoster.title}">
       <h2>${sadPoster.title}</h2>
       <h4>${sadPoster.quote}</h4>
     </div>`
   })
+  addDeleteListeners();
 }
 
 function createUserPoster(event) {
@@ -377,4 +378,18 @@ unmotivationalInfo.forEach((sadPoster) => {
   unmotivationalPosters.push(createPoster(sadImage,sadTitle,sadQuote))
 })
 
+function addDeleteListeners() {
+  const miniPosters = document.querySelectorAll('.sad-posters-grid .mini-poster');
+  miniPosters.forEach(poster => {
+    poster.addEventListener('dblclick', deletePoster);
+  });
+}
 
+function deletePoster(event) {
+  const posterElement = event.currentTarget;
+  const index = parseInt(posterElement.dataset.index)
+  console.log(posterElement.dataset.index)
+  unmotivationalPosters.splice(index, 1)
+  
+  showUnmotivational();
+}
