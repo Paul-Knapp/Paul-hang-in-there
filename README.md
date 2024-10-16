@@ -25,22 +25,24 @@ ______________________________________________________
 # Hang in There  
 
 ### Abstract:
-[//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
+This webpage can display and create motivational posters from a random array of information or from user input photos and captions.
 
 ### Installation Instructions:
-[//]: <> (What steps does a person have to take to get your app cloned down and running?)
+In order to run this webpage a user can use github to clone the repository and go into directory and run "open index.html"
 
 ### Preview of App:
-[//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off. gifs preferred!)
+
 
 ### Context:
-[//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
+This project was givin a timeline of ten days to reach an mvp. As a student of module two of the turing full stack program I was expected to transition from ruby into javascript for this project.
 
 ### Contributors:
-[//]: <> (Who worked on this application? Link to your GitHub. Consider also providing LinkedIn link)
+Paul Knapp was the contributer for this project. 
+Pauls Linkedin is (www.linkedin.com/in/paul-knapp-39119632b)
+
 
 ### Learning Goals:
-[//]: <> (What were the learning goals of this project? What tech did you work with?)
+learning goals for this project included context switching between coding languages, learning how to write good HTML and learning css comp matching. I learned how to read the mdn documentation as well as developed comfort with visual code studio keyboard shortcuts.
 
 ### Wins + Challenges:
-[//]: <> (What are 2-3 wins you have from this project? What were some challenges you faced - and how did you get over them?)
+I really enjoyed learning how to context switch even though it was a struggle early on in the project. My biggest win of the whole project was definitely writing a new function for diplaying the unmotivational posters and having it work the first time I attempted to run it.
