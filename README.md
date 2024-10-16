@@ -31,7 +31,7 @@ This webpage can display and create motivational posters from a random array of 
 In order to run this webpage a user can use github to clone the repository and go into directory and run "open index.html"
 
 ### Preview of App:
-
+![unmotivational page](readme-imgs/Screenshot 2024-10-16 at 2.26.11 PM.png)
 
 ### Context:
 This project was givin a timeline of ten days to reach an mvp. As a student of module two of the turing full stack program I was expected to transition from ruby into javascript for this project.
