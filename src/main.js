@@ -388,7 +388,7 @@ function addDeleteListeners() {
 function deletePoster(event) {
   const posterElement = event.currentTarget;
   const index = parseInt(posterElement.dataset.index);
-  
+  console.log(posterElement.dataset.index)
   unmotivationalPosters.splice(index, 1);
   
   showUnmotivational();
