@@ -156,8 +156,10 @@ saved-posters {
   padding: 20px;
 }
 
+.sad-posters-grid
 .mini-poster {
-  background: black;
+  background: gray;
+  border-radius: 20px;
   color: white;
   height: 340px;
   padding: 25px;
